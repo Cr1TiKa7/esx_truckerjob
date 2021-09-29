@@ -165,14 +165,12 @@ function StartJob(jobIndex)
             while (GetVehiclePedIsIn(ped, truckVeh) == 0)do
                 Citizen.Wait(100)
             end
-            RemoveSmallBlip(vehBlip)
             ShowPedHelpDialog(_U('get_trailer_msg'))
             SetNewWaypoint(v.Jobs[jobIndex].TrailerSpawn.x, v.Jobs[jobIndex].TrailerSpawn.y)
-            while (IsTrailerAttached() == false)do
+            while (IsTrailerAttached(trailerVeh) == false)do
                 Citizen.Wait(100)
             end
             ShowPedHelpDialog(_U('bring_trailer_to_dest_msg'))
-            RemoveSmallBlip(trailerBlip)
             SetNewWaypoint(v.Jobs[jobIndex].Destination.x, v.Jobs[jobIndex].Destination.y)
             isDrawMarker = true
             markerPos = v.Jobs[jobIndex].Destination
